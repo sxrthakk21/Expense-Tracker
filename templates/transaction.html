@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transactions</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='transaction.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <div class="logo-image">
+                <img src="{{ url_for('static', filename='logo new.png') }}" alt="Expense Tracker Logo">
+            </div>
+
+            <a href="#" class="logo">Expense Tracker</a>
+
+        </div>
+
+        <ul>
+    <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+    <li><a href="/dashboard" class="{{ 'active' if request.path == '/dashboard' else '' }}">Dashboard</a></li>
+    <li><a href="/transaction" class="{{ 'active' if request.path == '/transaction' else '' }}">Transactions</a></li>
+    <li><a href="/contact" class="{{ 'active' if request.path == '/contact' else '' }}">About</a></li>
+    <li>
+        <a href="/login">
+            <button type="button">Log Out</button>
+        </a>
+    </li>
+</ul>
+
+    </header>
+
+
+    <!-- ================= SEARCH BAR ================= -->
+
+    <div class="search-container">
+
+        <input type="text" id="searchInput" placeholder="Search transactions..." onkeyup="searchTransactions()">
+
+        <button class="search-btn" type="button" onclick="searchTransactions()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
+
+
+    <!-- ================= SUMMARY BOXES ================= -->
+
+    <div class="summary-boxes">
+
+        <!-- Add Transactions -->
+        <div class="summary-box add-box" id="addBox" onclick="toggleForm()">
+            <i class="fa-solid fa-plus"></i>
+            <h2>Add Transactions</h2>
+        </div>
+
+        <!-- Export -->
+        <div class="summary-box export-box" onclick="toggleExport()">
+            <i class="fa-solid fa-file-export"></i>
+            <h2>Export</h2>
+        </div>
+
+        <!-- Categories -->
+        <div class="summary-box category-box" onclick="toggleCategories()">
+            <i class="fa-solid fa-layer-group"></i>
+            <h2>Categories</h2>
+        </div>
+
+    </div>
+
+
+    <!-- ================= ADD TRANSACTION MODAL ================= -->
+
+    <div id="formOverlay" class="form-overlay" style="display:none;">
+        <div id="transactionForm">
+            <form action="/add" method="POST">
+
+                <input type="text" name="description" placeholder="Description" required>
+
+                <input type="number" step="0.01" name="amount" placeholder="Amount" required>
+
+                <select name="type" required>
+                    <option value="">Select Type</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <select name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                </select>
+
+                <input type="date" name="date" required>
+
+                <button type="submit">Add</button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ================= CATEGORIES MODAL ================= -->
+
+    <div id="categoryOverlay" class="form-overlay" style="display:none;">
+        <div id="categoryCard">
+            <h2>Spending by Category</h2>
+
+            {% if categories %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Total Spent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cat in categories %}
+                    <tr>
+                        <td>{{ cat[0] }}</td>
+                        <td>₹{{ cat[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No expense data yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- ================= EXPORT MODAL ================= -->
+
+    <div id="exportOverlay" class="form-overlay" style="display:none;">
+        <div id="exportCard">
+            <h2>Export Transactions</h2>
+            <p>Choose a format to download your transaction history.</p>
+
+            <a href="/export/csv" class="export-option">
+                <i class="fa-solid fa-file-csv"></i>
+                <div>
+                    <strong>CSV File</strong>
+                    <span>Opens in Excel, Google Sheets, or Numbers</span>
+                </div>
+            </a>
+
+            <a href="/export/pdf" class="export-option">
+                <i class="fa-solid fa-file-pdf"></i>
+                <div>
+                    <strong>PDF File</strong>
+                    <span>Ready to view or print</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ================= TRANSACTION LIST ================= -->
+
+    <div class="desc-box">
+        <h2>Transaction History</h2>
+
+        {% if expenses %}
+        <table id="transactionTable">
+            <thead>
+                <tr>
+                    <th>SR No.</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ expense[1] }}</td>
+                    <td>₹{{ expense[2] }}</td>
+                    <td>{{ expense[3] }}</td>
+                    <td>{{ expense[5] }}</td>
+                    <td>{{ expense[4] }}</td>
+                    <td>
+                        <a href="/delete/{{ expense[0] }}">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No transactions yet. Click "Add Transactions" to get started.</p>
+        {% endif %}
+    </div>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+        function toggleForm() {
+            const overlay = document.getElementById('formOverlay');
+            if (overlay.style.display === "none" || overlay.style.display === "") {
+                overlay.style.display = "flex";
+            } else {
+                overlay.style.display = "none";
+            }
+        }
+
+        document.getElementById('formOverlay').addEventListener('click', function(e) {
+            if (e.target.id === 'formOverlay') {
+                toggleForm();
+            }
+        });
+
+        function toggleCategories() {
+            const overlay = document.getElementById('categoryOverlay');
+            if (overlay.style.display === "none" || overlay.style.display === "") {
+                overlay.style.display = "flex";
+            } else {
+                overlay.style.display = "none";
+            }
+        }
+
+        document.getElementById('categoryOverlay').addEventListener('click', function(e) {
+            if (e.target.id === 'categoryOverlay') {
+                toggleCategories();
+            }
+        });
+
+        function toggleExport() {
+            const overlay = document.getElementById('exportOverlay');
+            if (overlay.style.display === "none" || overlay.style.display === "") {
+                overlay.style.display = "flex";
+            } else {
+                overlay.style.display = "none";
+            }
+        }
+
+        document.getElementById('exportOverlay').addEventListener('click', function(e) {
+            if (e.target.id === 'exportOverlay') {
+                toggleExport();
+            }
+        });
+
+        function searchTransactions() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('transactionTable');
+
+            if (!table) return;
+
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const text = row.textContent.toLowerCase();
+
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

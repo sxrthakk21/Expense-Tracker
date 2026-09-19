@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class = "brand">
+        <div class = "logo-image">
+            <img src="{{ url_for('static', filename='logo new.png') }}">
+         </div>
+         <a href="#" class="logo">Expense Tracker</a>
+         </div>
+         <ul>
+    <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+    <li><a href="/dashboard" class="{{ 'active' if request.path == '/dashboard' else '' }}">Dashboard</a></li>
+    <li><a href="/transaction" class="{{ 'active' if request.path == '/transaction' else '' }}">Transactions</a></li>
+    <li><a href="/contact" class="{{ 'active' if request.path == '/contact' else '' }}">About</a></li>
+    <li>
+        <a href="/login">
+            <button type="button">Log In</button>
+        </a>
+    </li>
+</ul>
+    </header>
+    <div class ="clipart-image">
+        <img src ="{{ url_for('static', filename='clipart.png') }}">
+    </div>
+    <a href = "/login">
+    <button type = "button" class="button1">Get Started</button>
+    </a>
+</body>
+</html>

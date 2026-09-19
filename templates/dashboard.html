@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel = "stylesheet" href ="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class = "brand">
+        <div class = "logo-image">
+            <img src="{{ url_for('static', filename='logo new.png') }}">
+         </div>
+         <a href="#" class="logo">Expense Tracker</a>
+         </div>
+         <ul>
+    <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+    <li><a href="/dashboard" class="{{ 'active' if request.path == '/dashboard' else '' }}">Dashboard</a></li>
+    <li><a href="/transaction" class="{{ 'active' if request.path == '/transaction' else '' }}">Transactions</a></li>
+    <li><a href="/contact" class="{{ 'active' if request.path == '/contact' else '' }}">About</a></li>
+    <li>
+        <a href="/login">
+            <button type="button">Log Out</button>
+        </a>
+    </li>
+</ul>
+    </header>
+        <div class = "row">
+        <div class = "container1">
+        <h2>Total Income</h2>
+        <p>₹ {{ total_income }}</p>
+        </div>
+        <div class = "container2">
+        <h2>Total Expense</h2>
+        <p>₹ {{ total_expense }}</p>
+        </div>
+        <div class = "container3">
+        <h2>Total Balance</h2>
+        <p>₹ {{ balance }}</p>
+        </div>
+        </div>
+    <div class="row1">
+    <div class ="pie-container">
+        <h1>Spending By Categories</h1>
+
+        <img
+        src="{{ url_for('static', filename='charts/pie_chart.png') }}"
+        class="chart-image"
+     >
+
+    </div>
+    <div class="linegraph-container">
+        <h1>Monthly Expenses</h1>
+
+        <img
+        src="{{ url_for('static', filename='charts/bar_chart.png') }}"
+        class="chart-image"
+     >
+    </div>
+    </div>
+    <div class="trans">
+    <h1>Recent Transactions</h1>
+
+    {% if expenses %}
+    <table>
+        <thead>
+            <tr>
+                <th>SR No.</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ expense[1] }}</td>
+                <td>₹{{ expense[2] }}</td>
+                <td>{{ expense[3] }}</td>
+                <td>{{ expense[5] }}</td>
+                <td>{{ expense[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No transactions yet.</p>
+    {% endif %}
+</div>
+</body>
+</html>

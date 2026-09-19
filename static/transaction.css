@@ -1,0 +1,723 @@
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================= NAVBAR ================= */
+
+header {
+    background: rgb(2, 121, 206);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 80px;
+
+    border-bottom: 5px solid rgb(107, 238, 175);
+}
+
+
+/* ================= BRAND ================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+
+/* Logo image */
+
+.logo-image {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.logo-image img {
+    height: 80px;
+    width: auto;
+
+    object-fit: contain;
+
+    margin-left: 40px;
+
+    display: block;
+
+    filter: drop-shadow(4px 0 4px rgba(0, 0, 0, 0.3));
+}
+
+
+/* Website name */
+
+.logo {
+    font-size: 30px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    color: white;
+
+    position: relative;
+
+    margin-left: 40px;
+
+    overflow: hidden;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+li {
+    display: inline-block;
+}
+
+
+li a {
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-right: 25px;
+
+    display: inline-block;
+
+    transition: transform 0.2s ease;
+}
+
+
+li a:hover {
+    color: rgb(107, 238, 175);
+}
+
+li a.active {
+    color: rgb(107, 238, 175);
+    font-weight: 700;
+    transform: translateZ(-5px) scale(1.1);
+}
+
+/* ================= LOGIN BUTTON ================= */
+
+button {
+    width: 90px;
+
+    background: rgb(5, 148, 243);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    margin-left: 10px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    margin-right: 40px;
+
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+button:hover {
+    transform: translateZ(-5px) scale(1.01);
+    background-color: rgb(107, 238, 175);
+    color: #123;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================= BODY ================= */
+
+body {
+    min-height: 100vh;
+
+    width: 100%;
+
+    background-color: #DBECFF;
+
+    background-image: url('doodles.png');
+
+    background-position: center;
+
+    background-repeat: repeat;
+
+    padding-bottom: 30px;
+}
+
+
+/* ================= SEARCH BAR ================= */
+
+.search-container {
+    display: flex;
+
+    width: 400px;
+
+    height: 45px;
+
+    margin: 20px auto;
+}
+
+
+.search-container input {
+    flex: 1;
+
+    padding: 10px 15px;
+
+    font-size: 16px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 25px 0 0 25px;
+
+    outline: none;
+}
+
+
+.search-container input:focus {
+    border-color: rgb(2, 121, 206);
+}
+
+
+/* Search button */
+
+.search-btn {
+    width: 55px;
+
+    height: 45px;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: rgb(2, 121, 206);
+
+    color: white;
+
+    font-size: 18px;
+
+    border-radius: 0 25px 25px 0;
+
+    cursor: pointer;
+}
+
+
+.search-btn:hover {
+    background-color: rgb(107, 238, 175);
+}
+
+
+/* ================= THREE BOXES ================= */
+
+.summary-boxes {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 20px;
+}
+
+
+/* Common box */
+
+.summary-box {
+    width: 33%;
+
+    height: 50px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    margin: 20px 20px 20px 20px;
+}
+
+
+/* Box headings */
+
+.summary-box h2 {
+    margin: 0;
+
+    font-size: 25px;
+}
+
+
+/* ================= ADD TRANSACTIONS ================= */
+
+.add-box {
+    background: white;
+    color: #666;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+    padding: 20px;
+}
+
+.add-box i {
+    font-size: 25px;
+}
+.add-box:hover{
+    transform: translateZ(-5px) scale(1.01);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================= Delete ================= */
+
+.delete-box {
+    background: white;
+    color: #666;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+    padding: 20px;
+}
+.delete-box i {
+    font-size: 25px;
+}
+.delete-box:hover{
+    transform: translateZ(-5px) scale(1.01);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= Categories ================= */
+
+.category-box {
+    background: white;
+    color: #666;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+    padding: 20px;
+}
+.category-box i {
+    font-size: 25px;
+}
+.category-box:hover{
+    transform: translateZ(-5px) scale(1.01);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.desc-box{
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    padding: 20px;
+    width: 98%;
+    height: 600px;
+    margin: 10px auto;
+}
+/* ================= TRANSACTION FORM CARD ================= */
+
+#transactionForm {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 350px;
+    margin: 20px auto;
+}
+
+#transactionForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#transactionForm input,
+#transactionForm select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+#transactionForm input:focus,
+#transactionForm select:focus {
+    border-color: rgb(2, 121, 206);
+}
+
+#transactionForm button {
+    width: 100%;
+    padding: 12px;
+    background: rgb(5, 148, 243);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#transactionForm button:hover {
+    background-color: rgb(107, 238, 175);
+}
+/* ================= MODAL OVERLAY (blurred background) ================= */
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+/* ================= TRANSACTION FORM CARD ================= */
+
+#transactionForm {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px;
+}
+
+#transactionForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#transactionForm input,
+#transactionForm select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+#transactionForm input:focus,
+#transactionForm select:focus {
+    border-color: rgb(2, 121, 206);
+}
+
+#transactionForm button {
+    width: 100%;
+    height: 45px;
+    padding: 12px;
+
+    background: rgb(5, 148, 243);
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    display: block;
+    margin: 15px 0 0 0;
+
+    box-sizing: border-box;
+}
+
+#transactionForm button:hover {
+    background-color: rgb(107, 238, 175);
+    color : #123;
+}
+.desc-box h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.desc-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.desc-box th,
+.desc-box td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.desc-box th {
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.desc-box td {
+    font-size: 15px;
+    color: #333;
+}
+
+.desc-box td a {
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+.desc-box td a:hover {
+    color: #c0392b;
+}
+/* ================= MODAL OVERLAY (blurred background) ================= */
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+/* ================= ADD TRANSACTION CARD ================= */
+
+#transactionForm {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px;
+}
+
+#transactionForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#transactionForm input,
+#transactionForm select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+#transactionForm input:focus,
+#transactionForm select:focus {
+    border-color: rgb(2, 121, 206);
+}
+
+#transactionForm button {
+    width: 100%;
+    padding: 12px;
+    background: rgb(5, 148, 243);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#transactionForm button:hover {
+    background-color: rgb(107, 238, 175);
+}
+
+/* ================= CATEGORIES CARD ================= */
+
+#categoryCard {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#categoryCard h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#categoryCard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#categoryCard th,
+#categoryCard td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#categoryCard th {
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* ================= TRANSACTION HISTORY TABLE ================= */
+
+.desc-box h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.desc-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.desc-box th,
+.desc-box td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.desc-box th {
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.desc-box td {
+    font-size: 15px;
+    color: #333;
+}
+
+.desc-box td a {
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+.desc-box td a:hover {
+    color: #c0392b;
+}
+#exportCard {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 380px;
+}
+
+#exportCard h2 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#exportCard p {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.export-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.export-option:hover {
+    background-color: #f0f8ff;
+    border-color: rgb(2, 121, 206);
+}
+
+.export-option i {
+    font-size: 24px;
+    color: rgb(2, 121, 206);
+    width: 30px;
+    text-align: center;
+}
+
+.export-option strong {
+    display: block;
+    font-size: 15px;
+}
+
+.export-option span {
+    font-size: 13px;
+    color: #888;
+}
+
+.export-box {
+    background: white;
+    color: #666;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.export-box i {
+    font-size: 25px;
+}
+.export-box:hover{
+    transform: translateZ(-5px) scale(1.01);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}

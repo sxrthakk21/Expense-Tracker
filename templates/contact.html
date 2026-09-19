@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class = "brand">
+        <div class = "logo-image">
+            <img src="{{ url_for('static', filename='logo new.png') }}">
+         </div>
+         <a href="#" class="logo">Expense Tracker</a>
+         </div>
+         <ul>
+    <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+    <li><a href="/dashboard" class="{{ 'active' if request.path == '/dashboard' else '' }}">Dashboard</a></li>
+    <li><a href="/transaction" class="{{ 'active' if request.path == '/transaction' else '' }}">Transactions</a></li>
+    <li><a href="/contact" class="{{ 'active' if request.path == '/contact' else '' }}">About</a></li>
+    <li>
+        <a href="/login">
+            <button type="button">Log Out</button>
+        </a>
+    </li>
+</ul>
+    </header>
+    <section class="about-section">
+
+     <img src="{{ url_for('static', filename='Aboutimg.png') }}" alt="About Expense Tracker">
+
+    </section>
+ <main class="team-container">
+    <div class="box">
+      <div class="clipart">
+      <img src="{{ url_for('static', filename='male2.png') }}"></img>
+      </div>
+      <h2>ANUJ SHARMA</h2>
+      <h3>Backend Developer - Expense Tracker</h3>
+      <p>Developed the backend functionality for an Expense Tracker application to manage and process user expense data. Implemented APIs for adding, updating, deleting, and retrieving expense records. Designed database structures to securely store income and expense information. Added server-side validation and error handling to ensure reliable data processing. Implemented calculations for total income, expenses, and remaining balance. Integrated the backend with the frontend to provide seamless data communication and a smooth user experience.
+</p>
+    </div>
+
+    <div class="box"><div class="clipart">
+      <img src="{{ url_for('static', filename='male1.png') }}"></img>
+      </div>
+      <h2>SARTHAK GAWADE</h2>
+      <h3>Frontend Developer - Expense Tracker</h3>
+      <p>Developed a responsive Expense Tracker web application using HTML, CSS, and JavaScript.
+Designed a user-friendly interface to record, edit, and delete daily expenses.
+Implemented expense categorization and dynamic calculation of total income, expenses, and balance.
+Created interactive dashboards to display expense summaries and financial insights.
+Ensured responsive design for smooth usage across desktop, tablet, and mobile devices.
+Focused on clean code, intuitive navigation, and an improved user experience.
+</p>
+    </div>
+
+    <div class="box">
+      <div class="clipart">
+      <img src="{{ url_for('static', filename='girlclipart.png') }}"></img>
+      </div>
+      <h2>SARA SINGH</h2>
+      <h3>Documentor & Analyst - Expense Tracker</h3>
+      <p>Prepared and maintained complete project documentation for the Expense Tracker application. Documented the project objectives, features, technologies used, and overall system workflow. Created detailed documentation for frontend, backend, and database components. Maintained records of project requirements, development progress, and key functionalities. Prepared user guides and technical notes to make the project easy to understand and maintain. Collaborated with team members to ensure all project information was accurate, organized, and up to date.
+</p>
+    </div>
+  </main>    
+</body>
+</html>

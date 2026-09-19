@@ -1,0 +1,478 @@
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #DBECFF;
+    background-image: url("doodles.png");
+    background-position: center;
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   MAIN LOGIN CONTAINER
+===================================================== */
+
+.login-container {
+    position: relative;
+
+    width: 950px;
+    max-width: 100%;
+
+    min-height: 570px;
+
+    display: flex;
+
+    background: #ffffff;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   LOGIN FORM AREA
+===================================================== */
+
+.form-boxlogin {
+    width: 55%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+}
+
+.form-boxlogin form {
+    width: 100%;
+    max-width: 380px;
+}
+
+.form-boxlogin h1 {
+    font-size: 42px;
+
+    color: #172033;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-box {
+    position: relative;
+
+    width: 100%;
+
+    margin: 18px 0;
+}
+
+.input-box input {
+    width: 100%;
+
+    height: 55px;
+
+    padding: 0 50px 0 18px;
+
+    border: 1px solid #d8e0e8;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #f7faff;
+
+    color: #172033;
+
+    font-size: 16px;
+
+    transition: 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: rgb(2, 121, 206);
+
+    box-shadow:
+        0 0 0 3px rgba(2, 121, 206, 0.12);
+
+    background: #ffffff;
+}
+
+.input-box input::placeholder {
+    color: #8993a1;
+}
+
+.input-box i {
+    position: absolute;
+
+    right: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: rgb(2, 121, 206);
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+.forgot-link {
+    text-align: right;
+
+    margin: 5px 0 20px;
+}
+
+.forgot-link a {
+    color: rgb(2, 121, 206);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    color: rgb(0, 91, 160);
+
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.form-boxlogin .btn {
+    width: 100%;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        90deg,
+        rgb(2, 121, 206),
+        rgb(5, 148, 243)
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin: 5px 0 20px;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 6px 15px rgba(2, 121, 206, 0.25);
+}
+
+.form-boxlogin .btn:hover {
+    transform: translateY(-2px);
+
+    background: linear-gradient(
+        90deg,
+        rgb(5, 148, 243),
+        rgb(2, 121, 206)
+    );
+
+    box-shadow:
+        0 10px 20px rgba(2, 121, 206, 0.3);
+}
+
+
+/* =====================================================
+   SOCIAL TEXT
+===================================================== */
+
+.form-boxlogin p {
+    text-align: center;
+
+    color: #697586;
+
+    font-size: 14px;
+
+    margin: 10px 0 15px;
+}
+
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
+
+.social-icon {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.social-icon a {
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    border: 1px solid #dce4ec;
+
+    color: #2563eb;
+
+    background: #ffffff;
+
+    font-size: 17px;
+
+    transition: 0.3s ease;
+}
+
+.social-icon a:hover {
+    color: white;
+
+    background: rgb(2, 121, 206);
+
+    border-color: rgb(2, 121, 206);
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.error-message {
+    background: #fff1f2;
+
+    color: #be123c;
+
+    border: 1px solid #fecdd3;
+
+    border-radius: 10px;
+
+    padding: 11px 14px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.error-message i {
+    margin-right: 5px;
+}
+
+
+/* =====================================================
+   RIGHT SIDE
+===================================================== */
+
+.toggle-box {
+    width: 45%;
+
+    background: linear-gradient(
+        145deg,
+        rgb(2, 121, 206),
+        rgb(5, 148, 243)
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Decorative circles */
+
+.toggle-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    border: 60px solid rgba(255, 255, 255, 0.08);
+
+    top: -120px;
+    right: -120px;
+}
+
+.toggle-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    border: 50px solid rgba(107, 238, 175, 0.12);
+
+    bottom: -100px;
+    left: -100px;
+}
+
+
+/* =====================================================
+   WELCOME CONTENT
+===================================================== */
+
+.toggle-panel {
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.welcome-icon {
+    width: 90px;
+
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    font-size: 40px;
+}
+
+.toggle-panel h1 {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+.toggle-panel p {
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .login-container {
+        flex-direction: column;
+
+        min-height: auto;
+
+        border-radius: 22px;
+    }
+
+    .form-boxlogin {
+        width: 100%;
+
+        padding: 40px 25px;
+    }
+
+    .toggle-box {
+        width: 100%;
+
+        min-height: 220px;
+
+        order: -1;
+    }
+
+    .toggle-panel {
+        padding: 25px;
+    }
+
+    .welcome-icon {
+        width: 65px;
+        height: 65px;
+
+        font-size: 28px;
+
+        margin-bottom: 15px;
+    }
+
+    .toggle-panel h1 {
+        font-size: 27px;
+    }
+
+    .toggle-panel p {
+        font-size: 14px;
+    }
+
+    .form-boxlogin h1 {
+        font-size: 32px;
+    }
+}
