@@ -721,3 +721,14 @@ body {
     transform: translateZ(-5px) scale(1.01);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
+.desc-box{
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    padding: 20px;
+    width: 98%;
+    height: 600px;
+    margin: 10px auto;
+    overflow-y: auto;
+}
